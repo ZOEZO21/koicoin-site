@@ -567,3 +567,75 @@ p{ margin:0; color:var(--muted); line-height:1.7; }
   font-size: 13px;
   opacity: 0.6;
 }
+/* ===============================
+   FINAL POLISH – Cards / Typography
+   paste at END of styles.css
+   =============================== */
+
+/* 让信息区更像“品牌铭牌” */
+.cta-block, .info-block{
+  border-radius: 26px !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+  background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.012)) !important;
+  box-shadow:
+    0 30px 90px rgba(0,0,0,0.48),
+    inset 0 1px 0 rgba(255,255,255,0.06) !important;
+  padding: 34px 36px !important;
+}
+
+/* 标题统一成品牌标签（更精致） */
+.cta-block h3, .info-block h3{
+  font-size: 12px !important;
+  letter-spacing: 0.34em !important;
+  text-transform: uppercase !important;
+  opacity: 0.70 !important;
+  margin: 0 0 24px 0 !important;
+}
+
+/* 行距更呼吸 + 分割线更隐 */
+.cta-lines div, .info-lines div{
+  padding: 20px 0 !important;
+  border-bottom: 1px solid rgba(255,255,255,0.055) !important;
+}
+
+/* 左侧 label 更轻（像系统说明） */
+.cta-lines span, .info-lines span{
+  opacity: 0.42 !important;
+  letter-spacing: 0.22em !important;
+  font-size: 11px !important;
+}
+
+/* 右侧信息更稳（不跳、不粗暴） */
+.cta-lines strong, .info-lines strong{
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.01em !important;
+}
+
+/* 地址那行允许优雅换行 */
+.info-lines strong{
+  max-width: 62%;
+  text-align: right;
+  line-height: 1.35;
+}
+
+/* 电话下划线更细更高级 */
+.cta-lines a{
+  border-bottom: 1px solid rgba(255,255,255,0.18) !important;
+}
+
+/* 让两张卡整体离顶部背景更舒服 */
+.section-dark .cta-info{
+  padding-top: 70px !important;
+  padding-bottom: 70px !important;
+}
+
+/* 手机端：卡片更满、更大字号 */
+@media (max-width: 900px){
+  .cta-block, .info-block{
+    padding: 30px 26px !important;
+  }
+  .info-lines strong{
+    max-width: 58%;
+  }
+}
