@@ -1287,3 +1287,186 @@ p{ margin:0; color:var(--muted); line-height:1.7; }
     font-size: 12px;
   }
 }
+/* ===========================
+   FIX PACK: Desktop cards + Mobile sticky
+   paste at END of styles.css
+   =========================== */
+
+/* base */
+body{
+  margin:0;
+  background:#05070c;
+  color:rgba(255,255,255,.92);
+}
+
+/* HERO background block */
+.hero-brand{
+  position:relative;
+  min-height: 88vh;
+}
+.hero-bg{
+  position:absolute;
+  inset:0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* content above bg */
+.hero-brand-content{
+  position:relative;
+  z-index:2;
+  min-height: 88vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding: clamp(28px, 6vw, 72px);
+}
+
+/* ====== Desktop layout (cards, not plain text) ====== */
+@media (min-width: 901px){
+
+  /* make contact NOT sticky on desktop */
+  .sticky-contact{
+    position: static !important;
+    bottom: auto !important;
+    left: auto !important;
+    transform: none !important;
+
+    width: min(980px, calc(100% - 80px));
+    margin: 30px auto 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .sticky-contact .item{
+    padding: 22px 26px;
+    border-radius: 22px;
+    background: rgba(10,20,30,.30);
+    border: 1px solid rgba(255,255,255,.10);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.06),
+      0 10px 40px rgba(0,0,0,.35);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .sticky-contact .item span{
+    display:block;
+    font-size: 12px;
+    letter-spacing: .26em;
+    opacity: .55;
+    margin-bottom: 10px;
+  }
+
+  .sticky-contact .item strong{
+    display:block;
+    font-size: 18px;
+    letter-spacing: .02em;
+  }
+
+  /* info cards */
+  .info{
+    width: min(980px, calc(100% - 80px));
+    margin: 0 auto 34px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  .info-card{
+    padding: 22px 26px;
+    border-radius: 22px;
+    background: rgba(10,20,30,.22);
+    border: 1px solid rgba(255,255,255,.08);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.05),
+      0 10px 40px rgba(0,0,0,.30);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .info-card span{
+    display:block;
+    font-size: 12px;
+    letter-spacing: .26em;
+    opacity: .55;
+    margin-bottom: 10px;
+  }
+
+  .info-card strong{
+    display:block;
+    font-size: 16px;
+    line-height: 1.35;
+  }
+
+  .info-card a{
+    color: rgba(255,255,255,.92);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,.18);
+  }
+  .info-card a:hover{
+    border-bottom-color: rgba(255,255,255,.35);
+  }
+
+  .footer{
+    width: min(980px, calc(100% - 80px));
+    margin: 0 auto 48px;
+    opacity: .65;
+  }
+}
+
+/* ====== Mobile layout (sticky bottom two items) ====== */
+@media (max-width: 900px){
+
+  .sticky-contact{
+    position: fixed;
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    z-index: 9998;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+
+    padding: 0;
+    background: transparent;
+  }
+
+  .sticky-contact .item{
+    padding: 14px 16px;
+    border-radius: 18px;
+    background: rgba(10,20,30,.38);
+    border: 1px solid rgba(255,255,255,.10);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.06),
+      0 10px 30px rgba(0,0,0,.35);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .sticky-contact .item span{
+    display:block;
+    font-size: 11px;
+    letter-spacing: .22em;
+    opacity: .55;
+    margin-bottom: 8px;
+  }
+
+  .sticky-contact .item strong{
+    display:block;
+    font-size: 16px;
+  }
+
+  /* give space above sticky bar */
+  .info{ padding-bottom: 110px; }
+}
