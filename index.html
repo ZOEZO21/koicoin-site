@@ -1,98 +1,351 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KOICOIN</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#05070c" />
+  <title>KOICOIN | Cafe · KTV · Bar</title>
+  <meta name="description" content="KOICOIN — Cafe · KTV · Bar | 260 Oteha Valley Road, Albany, Auckland | 11am–3am | 027 332 2466 | WeChat: koicoin_nz" />
 
-  <!-- Main Styles -->
-  <link rel="stylesheet" href="styles.css" />
+  <!-- If you still keep styles.css, you can leave this. Version param helps cache. -->
+  <link rel="stylesheet" href="styles.css?v=99" />
 
-  <!-- SEO / Share -->
-  <meta name="description" content="KOICOIN — Cafe · KTV · Bar in Albany, Auckland." />
-  <meta property="og:title" content="KOICOIN" />
-  <meta property="og:description" content="Cafe · KTV · Bar · Albany, Auckland" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://zoezo21.github.io/koicoin-site/assets/images/hero.JPG" />
+  <style>
+    :root{
+      --bg:#05070c;
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.62);
+      --glass:rgba(10,20,30,.28);
+      --glass2:rgba(10,20,30,.38);
+      --stroke:rgba(255,255,255,.10);
+      --stroke2:rgba(255,255,255,.08);
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --shadow2: inset 0 1px 0 rgba(255,255,255,.06);
+      --r:22px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      overflow-x:hidden;
+    }
+
+    /* Hero */
+    .hero{
+      position:relative;
+      min-height: 100vh;
+      background: var(--bg);
+    }
+    .hero-bg{
+      position:absolute;
+      inset:0;
+      background-image: url("hero.JPG");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transform: scale(1.02);
+      filter: saturate(1.05) contrast(1.03);
+    }
+    /* top fade for status bar readability */
+    .hero-bg::before{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(to bottom,
+        rgba(5,7,12,.72) 0%,
+        rgba(5,7,12,.18) 22%,
+        rgba(5,7,12,0) 44%,
+        rgba(5,7,12,.25) 78%,
+        rgba(5,7,12,.75) 100%
+      );
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      min-height: 100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      padding: clamp(28px, 6vw, 72px);
+      padding-top: max(28px, env(safe-area-inset-top));
+      padding-bottom: calc(28px + env(safe-area-inset-bottom));
+    }
+
+    /* Title block */
+    .brand{
+      max-width: 980px;
+    }
+    .brand h1{
+      margin:0 0 14px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: .88;
+      font-size: clamp(58px, 9vw, 140px);
+      text-transform: uppercase;
+      overflow: visible;
+      white-space: nowrap; /* desktop keep single line */
+    }
+    .brand .tagline{
+      margin:0;
+      font-size: 12px;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.68);
+    }
+
+    /* Language toggle (floating) */
+    .lang-float{
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      z-index: 9999;
+      display:flex;
+      gap: 6px;
+      padding: 6px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    .lang-float button{
+      appearance:none;
+      border:0;
+      background: transparent;
+      color: rgba(255,255,255,.82);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      letter-spacing: .04em;
+      cursor:pointer;
+    }
+    .lang-float button[aria-pressed="true"]{
+      background: rgba(0,0,0,.22);
+      color: rgba(255,255,255,.94);
+      border: 1px solid rgba(255,255,255,.18);
+    }
+
+    /* Desktop info area */
+    .grid{
+      width: min(980px, calc(100% - 80px));
+      margin: 26px auto 0;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .card{
+      padding: 22px 26px;
+      border-radius: var(--r);
+      background: var(--glass);
+      border: 1px solid var(--stroke2);
+      box-shadow: var(--shadow2), 0 12px 45px rgba(0,0,0,.30);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+    .k{ display:block; font-size:12px; letter-spacing:.26em; opacity:.55; margin-bottom:10px; }
+    .v{ display:block; font-size:16px; line-height:1.35; letter-spacing:.01em; }
+    a.v{ color: rgba(255,255,255,.92); text-decoration:none; border-bottom:1px solid rgba(255,255,255,.18); }
+    a.v:hover{ border-bottom-color: rgba(255,255,255,.38); }
+
+    /* Desktop micro-glow hover */
+    @media (hover:hover){
+      .card:hover{
+        transform: translateY(-2px);
+        border-color: rgba(255,255,255,.14);
+        box-shadow: var(--shadow2), 0 18px 70px rgba(0,0,0,.42);
+      }
+    }
+
+    /* Footer */
+    .footer{
+      width: min(980px, calc(100% - 80px));
+      margin: 34px auto 54px;
+      color: rgba(255,255,255,.58);
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    /* Mobile sticky contact */
+    .sticky-contact{
+      position: fixed;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      z-index: 9998;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+    .pill{
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: var(--glass2);
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow2), 0 10px 30px rgba(0,0,0,.35);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+    .pill .k{ font-size:11px; letter-spacing:.22em; margin-bottom:8px; }
+    .pill .v{ font-size:16px; }
+
+    /* Mobile layout overrides */
+    @media (max-width: 900px){
+      .hero-content{
+        padding: 26px 18px;
+        padding-top: max(26px, env(safe-area-inset-top));
+        padding-bottom: calc(130px + env(safe-area-inset-bottom)); /* room for sticky */
+        padding-right: 92px; /* keep right space for lang pill */
+      }
+      .brand h1{
+        font-size: clamp(56px, 16vw, 92px);
+        line-height: .92;
+        white-space: normal; /* allow wrap if needed */
+        overflow: visible;
+      }
+      .grid{
+        width: calc(100% - 28px);
+        margin: 18px auto 0;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .card{
+        padding: 14px 16px;
+        border-radius: 18px;
+        background: rgba(10,20,30,.34);
+      }
+      .v{ font-size:14px; }
+      .footer{
+        width: calc(100% - 28px);
+        margin: 24px auto 0;
+        padding-bottom: 140px;
+      }
+      .lang-float{
+        top: 12px;
+        right: 12px;
+        padding: 5px;
+      }
+      .lang-float button{
+        padding: 7px 10px;
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 380px){
+      .hero-content{ padding-right: 86px; }
+      .brand h1{ font-size: clamp(52px, 15vw, 84px); }
+    }
+  </style>
 </head>
 
 <body>
-
-  <!-- Floating Language Switch (no top bar) -->
-  <div class="lang-float" aria-label="Language switch">
-    <button data-set-lang="zh" class="active" type="button">中文</button>
-    <button data-set-lang="en" type="button">EN</button>
+  <!-- Floating language toggle -->
+  <div class="lang-float" role="group" aria-label="Language">
+    <button id="btn-zh" aria-pressed="true" type="button">中文</button>
+    <button id="btn-en" aria-pressed="false" type="button">EN</button>
   </div>
 
-  <!-- HERO -->
-  <section class="hero-brand">
-    <div
-      class="hero-bg"
-      style="background-image:url('assets/images/hero.JPG')"
-      aria-hidden="true"
-    ></div>
+  <main class="hero" aria-label="KOICOIN Landing">
+    <div class="hero-bg" aria-hidden="true"></div>
 
-    <div class="hero-brand-content">
-      <h1>KOICOIN</h1>
-      <p>CAFE · KTV · BAR</p>
+    <section class="hero-content">
+      <div class="brand">
+        <h1 data-i18n="brand">KOICOIN</h1>
+        <p class="tagline" data-i18n="tagline">Cafe · KTV · Bar</p>
+      </div>
+
+      <!-- Info cards (desktop + mobile below hero) -->
+      <section class="grid info" aria-label="Info">
+        <div class="card info-card">
+          <span class="k" data-i18n="contactTitle">CONTACT</span>
+          <span class="v"><span class="k" style="margin:0 0 6px; opacity:.5; letter-spacing:.22em;">PHONE</span>
+            <strong class="v" style="font-weight:700;">027 332 2466</strong>
+          </span>
+          <div style="height:12px"></div>
+          <span class="v"><span class="k" style="margin:0 0 6px; opacity:.5; letter-spacing:.22em;">WECHAT</span>
+            <strong class="v" style="font-weight:700;">koicoin_nz</strong>
+          </span>
+        </div>
+
+        <div class="card info-card">
+          <span class="k">INFO</span>
+          <span class="v"><span class="k" style="margin:0 0 6px; opacity:.5; letter-spacing:.22em;" data-i18n="addressKey">ADDRESS</span>
+            <strong class="v" style="font-weight:650;" data-i18n="addressVal">260 Oteha Valley Road, Albany, Auckland</strong>
+          </span>
+          <div style="height:12px"></div>
+          <span class="v"><span class="k" style="margin:0 0 6px; opacity:.5; letter-spacing:.22em;" data-i18n="hoursKey">HOURS</span>
+            <strong class="v" style="font-weight:650;" data-i18n="hoursVal">11am – 3am</strong>
+          </span>
+        </div>
+      </section>
+
+      <div class="footer" data-i18n="footer">KOICOIN · Albany · Auckland</div>
+    </section>
+  </main>
+
+  <!-- Mobile sticky contact (only phone/wechat, ultra minimal) -->
+  <div class="sticky-contact" aria-label="Quick Contact">
+    <div class="pill">
+      <span class="k">PHONE</span>
+      <span class="v" style="font-weight:800;">027 332 2466</span>
     </div>
-  </section>
-
-  <!-- MOBILE STICKY CONTACT -->
-  <section class="sticky-contact">
-    <div class="item">
-      <span>PHONE</span>
-      <strong>027 332 2466</strong>
+    <div class="pill">
+      <span class="k">WECHAT</span>
+      <span class="v" style="font-weight:800;">koicoin_nz</span>
     </div>
-    <div class="item">
-      <span>WECHAT</span>
-      <strong>koicoin_nz</strong>
-    </div>
-  </section>
+  </div>
 
-  <!-- INFO -->
-  <section class="info">
-    <div class="info-card">
-      <span>ADDRESS</span>
-      <strong>
-        <a
-          href="https://www.google.com/maps?q=260+Oteha+Valley+Road,+Albany,+Auckland"
-          target="_blank"
-          rel="noopener"
-        >
-          260 Oteha Valley Road, Albany, Auckland
-        </a>
-      </strong>
-    </div>
+  <script>
+    // Simple i18n
+    const dict = {
+      zh: {
+        contactTitle: "预约 / 咨询",
+        tagline: "Cafe · KTV · Bar",
+        addressKey: "地址",
+        addressVal: "260 Oteha Valley Road, Albany, Auckland",
+        hoursKey: "营业时间",
+        hoursVal: "11am – 3am",
+        footer: "KOICOIN · Albany · Auckland"
+      },
+      en: {
+        contactTitle: "CONTACT",
+        tagline: "Cafe · KTV · Bar",
+        addressKey: "ADDRESS",
+        addressVal: "260 Oteha Valley Road, Albany, Auckland",
+        hoursKey: "HOURS",
+        hoursVal: "11am – 3am",
+        footer: "KOICOIN · Albany · Auckland"
+      }
+    };
 
-    <div class="info-card">
-      <span>HOURS</span>
-      <strong>11am – 3am</strong>
-    </div>
-  </section>
+    const btnZh = document.getElementById('btn-zh');
+    const btnEn = document.getElementById('btn-en');
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <span>KOICOIN</span>
-    <small>Albany · Auckland</small>
-  </footer>
+    function setLang(lang){
+      document.documentElement.lang = (lang === 'zh') ? 'zh-CN' : 'en';
+      localStorage.setItem('koicoin_lang', lang);
 
-  <!-- Language Script -->
-  <script src="script.js"></script>
+      btnZh.setAttribute('aria-pressed', lang === 'zh' ? 'true' : 'false');
+      btnEn.setAttribute('aria-pressed', lang === 'en' ? 'true' : 'false');
 
-</body>
-</html>
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key = el.getAttribute('data-i18n');
+        if(dict[lang] && dict[lang][key]) el.textContent = dict[lang][key];
+      });
+    }
 
-<!-- =====================
-     INLINE CSS: force hide top bar on mobile
-     (guaranteed, no class guessing)
-     ===================== -->
-<style>
-  @media (max-width: 900px){
-    .desktop-only{ display:none !important; }
-  }
-</style>
+    btnZh.addEventListener('click', ()=>setLang('zh'));
+    btnEn.addEventListener('click', ()=>setLang('en'));
 
-<script src="./script.js"></script>
+    // init
+    setLang(localStorage.getItem('koicoin_lang') || 'zh');
+  </script>
 </body>
 </html>
