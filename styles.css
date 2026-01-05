@@ -1093,3 +1093,81 @@ p{ margin:0; color:var(--muted); line-height:1.7; }
   body{ padding-top: 0 !important; }
   .hero-brand{ padding-top: 0 !important; }
 }
+/* =========================================
+   HERO POLISH – depth & focus
+   ========================================= */
+.hero-brand{
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dark radial mask to lift the logo */
+.hero-brand::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0,0,0,0.35) 0%,
+    rgba(0,0,0,0.55) 55%,
+    rgba(0,0,0,0.75) 100%
+  );
+  pointer-events:none;
+  z-index:1;
+}
+
+/* Keep content above mask */
+.hero-brand-content{
+  position: relative;
+  z-index:2;
+}
+
+/* KOICOIN title */
+.hero-brand h1{
+  letter-spacing: 0.08em;
+  text-shadow: 0 8px 40px rgba(0,0,0,.55);
+}
+
+/* Subtitle: Cafe · KTV · Bar */
+.hero-brand p{
+  margin-top: 12px;
+  letter-spacing: 0.25em;
+  font-size: 13px;
+  opacity: .85;
+}
+
+
+/* =========================================
+   MOBILE: kill top bar completely
+   ========================================= */
+@media (max-width: 900px){
+  .desktop-only,
+  header, nav, .nav, .navbar, .topbar{
+    display:none !important;
+  }
+
+  body{
+    padding-top: 0 !important;
+  }
+}
+
+
+/* =========================================
+   STICKY CONTACT BAR – premium glass
+   ========================================= */
+.sticky-contact{
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  background: linear-gradient(
+    to top,
+    rgba(10,20,30,.55),
+    rgba(10,20,30,.35)
+  );
+}
+
+.sticky-contact .item{
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 8px 30px rgba(0,0,0,.35);
+}
