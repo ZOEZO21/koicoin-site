@@ -1470,3 +1470,108 @@ body{
   /* give space above sticky bar */
   .info{ padding-bottom: 110px; }
 }
+/* ==================================================
+   MOBILE FINAL FIX
+   - Hero title not cropped
+   - Info shown as glass cards
+   - Safe spacing for language switch
+   ================================================== */
+
+@media (max-width: 900px){
+
+  /* ---------- Language pill safe area ---------- */
+  .lang-float{
+    top: 12px;
+    right: 12px;
+    padding: 5px;
+    z-index: 10;
+  }
+  .lang-float button{
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+
+  /* ---------- HERO content spacing ---------- */
+  .hero-brand-content{
+    padding: 26px 18px;
+    padding-right: 92px; /* avoid language pill overlap */
+  }
+
+  /* ---------- HERO title fix (KOICOIN full visible) ---------- */
+  .hero-brand-content h1{
+    font-size: clamp(56px, 16vw, 92px);
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    margin: 0 0 14px;
+    max-width: 100%;
+    white-space: normal;   /* allow wrap */
+    overflow: visible;    /* never clip */
+  }
+
+  .hero-brand-content p{
+    font-size: 12px;
+    letter-spacing: .22em;
+    opacity: .7;
+    margin: 0;
+  }
+
+  /* ---------- INFO section as glass cards ---------- */
+  .info{
+    width: calc(100% - 28px);
+    margin: 18px auto 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding-bottom: 120px; /* space for sticky contact bar */
+  }
+
+  .info-card{
+    padding: 14px 16px;
+    border-radius: 18px;
+    background: rgba(10,20,30,.34);
+    border: 1px solid rgba(255,255,255,.10);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.06),
+      0 10px 30px rgba(0,0,0,.35);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .info-card span{
+    display:block;
+    font-size: 11px;
+    letter-spacing: .22em;
+    opacity: .55;
+    margin-bottom: 8px;
+  }
+
+  .info-card strong{
+    display:block;
+    font-size: 14px;
+    line-height: 1.35;
+  }
+
+  .info-card a{
+    color: rgba(255,255,255,.92);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,.18);
+  }
+
+  /* ---------- Footer spacing ---------- */
+  .footer{
+    width: calc(100% - 28px);
+    margin: 24px auto 0;
+    padding-bottom: 120px;
+    opacity: .65;
+  }
+}
+
+/* ---------- Extra small phones ---------- */
+@media (max-width: 380px){
+  .hero-brand-content{
+    padding-right: 86px;
+  }
+  .hero-brand-content h1{
+    font-size: clamp(52px, 15vw, 84px);
+  }
+}
