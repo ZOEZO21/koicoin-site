@@ -1,118 +1,87 @@
-<!doctype html>
-<html lang="zh">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KOICOIN</title>
-  <link rel="stylesheet" href="./styles.css"/>
+
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- SEO / Share -->
+  <meta name="description" content="KOICOIN — Cafe · KTV · Bar in Albany, Auckland." />
+  <meta property="og:title" content="KOICOIN" />
+  <meta property="og:description" content="Cafe · KTV · Bar · Albany, Auckland" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://zoezo21.github.io/koicoin-site/assets/images/hero.JPG" />
 </head>
+
 <body>
 
-<!-- =====================
-     DESKTOP ONLY TOP BAR
-     (hidden on mobile by inline CSS below)
-     ===================== -->
-<header class="topbar topbar-ghost desktop-only">
-  <div class="container nav">
-    <div class="brand-mini">KOICOIN</div>
-    <div class="right">
-      <div class="lang">
-        <button data-set-lang="zh" class="active">中文</button>
-        <button data-set-lang="en">EN</button>
-      </div>
+  <!-- Floating Language Switch (no top bar) -->
+  <div class="lang-float" aria-label="Language switch">
+    <button data-set-lang="zh" class="active" type="button">中文</button>
+    <button data-set-lang="en" type="button">EN</button>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero-brand">
+    <div
+      class="hero-bg"
+      style="background-image:url('assets/images/hero.JPG')"
+      aria-hidden="true"
+    ></div>
+
+    <div class="hero-brand-content">
+      <h1>KOICOIN</h1>
+      <p>CAFE · KTV · BAR</p>
     </div>
-  </div>
-</header>
+  </section>
 
-<!-- =====================
-     LANDING HERO
-     ===================== -->
-<section class="hero-brand">
-  <div class="hero-bg"></div>
+  <!-- MOBILE STICKY CONTACT -->
+  <section class="sticky-contact">
+    <div class="item">
+      <span>PHONE</span>
+      <strong>027 332 2466</strong>
+    </div>
+    <div class="item">
+      <span>WECHAT</span>
+      <strong>koicoin_nz</strong>
+    </div>
+  </section>
 
-  <div class="hero-brand-content hero-center">
-    <h1>KOICOIN</h1>
-
-    <!-- One-line positioning only -->
-    <p data-lang="zh">Cafe · KTV · Bar</p>
-    <p data-lang="en">Cafe · KTV · Bar</p>
-  </div>
-</section>
-
-<!-- =====================
-     CTA + KEY INFO
-     ===================== -->
-<section class="section section-dark">
-  <div class="container cta-info">
-
-    <!-- Booking -->
-    <div class="cta-block">
-      <h3 data-lang="zh">预约 / 咨询</h3>
-      <h3 data-lang="en">Booking</h3>
-
-      <div class="cta-lines">
-        <div>
-          <span data-lang="zh">Phone</span>
-          <span data-lang="en">Phone</span>
-          <strong><a href="tel:0273322466">027 332 2466</a></strong>
-        </div>
-
-        <div>
-          <span data-lang="zh">WeChat</span>
-          <span data-lang="en">WeChat</span>
-          <strong>koicoin_nz</strong>
-        </div>
-      </div>
+  <!-- INFO -->
+  <section class="info">
+    <div class="info-card">
+      <span>ADDRESS</span>
+      <strong>
+        <a
+          href="https://www.google.com/maps?q=260+Oteha+Valley+Road,+Albany,+Auckland"
+          target="_blank"
+          rel="noopener"
+        >
+          260 Oteha Valley Road, Albany, Auckland
+        </a>
+      </strong>
     </div>
 
-    <!-- Info -->
-    <div class="info-block">
-      <h3 data-lang="zh">Info</h3>
-      <h3 data-lang="en">Info</h3>
-
-      <div class="info-lines">
-        <div>
-          <span data-lang="zh">Address</span>
-          <span data-lang="en">Address</span>
-          <strong>260 Oteha Valley Road, Albany, Auckland</strong>
-        </div>
-
-        <div>
-          <span data-lang="zh">Hours</span>
-          <span data-lang="en">Hours</span>
-          <strong>11am – 3am</strong>
-        </div>
-      </div>
+    <div class="info-card">
+      <span>HOURS</span>
+      <strong>11am – 3am</strong>
     </div>
+  </section>
 
-  </div>
-</section>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span>KOICOIN</span>
+    <small>Albany · Auckland</small>
+  </footer>
 
-<!-- =====================
-     FOOTER
-     ===================== -->
-<footer class="footer">
-  <div class="container footerGrid">
-    <div>
-      <b>KOICOIN</b>
-      <div class="note">Albany · Auckland</div>
-    </div>
-  </div>
-</footer>
+  <!-- Language Script -->
+  <script src="script.js"></script>
 
-<!-- =====================
-     MOBILE STICKY CONTACT
-     ===================== -->
-<div class="sticky-contact">
-  <div class="item">
-    <span class="label">Phone</span>
-    <span class="value"><a href="tel:0273322466">027 332 2466</a></span>
-  </div>
-  <div class="item">
-    <span class="label">WeChat</span>
-    <span class="value">koicoin_nz</span>
-  </div>
-</div>
+</body>
+</html>
 
 <!-- =====================
      INLINE CSS: force hide top bar on mobile
