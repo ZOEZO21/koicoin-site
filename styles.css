@@ -490,4 +490,80 @@ p{ margin:0; color:var(--muted); line-height:1.7; }
     grid-template-columns: 1fr;
     padding: 60px 0;
   }
+}/* ===============================
+   Bottom Info – Premium Styling
+   (paste at END of styles.css)
+   =============================== */
+
+.cta-info{
+  align-items: flex-start;
+}
+
+.cta-block,
+.info-block{
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.04),
+    rgba(255,255,255,0.015)
+  );
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+
+/* Titles: like brand labels */
+.cta-block h3,
+.info-block h3{
+  font-size: 14px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  opacity: 0.65;
+  margin-bottom: 22px;
+}
+
+/* spacing + hierarchy */
+.cta-lines div,
+.info-lines div{
+  padding: 18px 0;
+}
+
+/* left labels (Phone / Address) */
+.cta-lines span,
+.info-lines span{
+  font-size: 12px;
+  opacity: 0.45;
+  letter-spacing: 0.18em;
+}
+
+/* right key info */
+.cta-lines strong,
+.info-lines strong{
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* phone link: premium underline */
+.cta-lines a{
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.25);
+  padding-bottom: 2px;
+}
+
+/* footer: brand signature */
+.footer{
+  padding-top: 64px;
+  opacity: 0.7;
+}
+
+.footer b{
+  font-weight: 500;
+  letter-spacing: 0.12em;
+}
+
+.footer .note{
+  font-size: 13px;
+  opacity: 0.6;
 }
