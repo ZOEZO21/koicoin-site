@@ -996,3 +996,66 @@ p{ margin:0; color:var(--muted); line-height:1.7; }
     rgba(255,255,255,0.020)
   ) !important;
 }
+/* ===============================
+   HERO MICRO MOTION (premium + subtle)
+   paste at END of styles.css
+   =============================== */
+
+/* Ensure hero background can animate smoothly */
+.hero-brand{
+  position: relative;
+  overflow: hidden;
+}
+
+/* 1) Background: slow drift + gentle breathing */
+.hero-bg{
+  transform: scale(1.05);
+  will-change: transform, filter;
+  animation: heroDrift 26s ease-in-out infinite alternate;
+}
+
+@keyframes heroDrift{
+  0%   { transform: scale(1.06) translate3d(-0.8%, -0.6%, 0); filter: saturate(1.02) brightness(1.00); }
+  50%  { transform: scale(1.07) translate3d( 0.6%, -0.2%, 0); filter: saturate(1.06) brightness(1.02); }
+  100% { transform: scale(1.06) translate3d( 0.2%,  0.6%, 0); filter: saturate(1.03) brightness(1.01); }
+}
+
+/* 2) Add a super subtle moving highlight (feels “liquid / metal”) */
+.hero-brand::after{
+  content: "";
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  background: radial-gradient(40% 30% at 20% 20%, rgba(120,170,255,0.08), rgba(120,170,255,0) 60%),
+              radial-gradient(35% 28% at 80% 30%, rgba(255,255,255,0.05), rgba(255,255,255,0) 62%),
+              radial-gradient(45% 35% at 55% 80%, rgba(120,170,255,0.06), rgba(120,170,255,0) 60%);
+  mix-blend-mode: screen;
+  opacity: 0.55;
+  transform: translate3d(0,0,0);
+  animation: heroGlow 18s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlow{
+  0%   { transform: translate3d(-1.2%, -0.8%, 0) rotate(-1deg); opacity: 0.45; }
+  50%  { transform: translate3d( 0.8%, -0.3%, 0) rotate( 0deg); opacity: 0.60; }
+  100% { transform: translate3d( 0.6%,  0.9%, 0) rotate( 1deg); opacity: 0.50; }
+}
+
+/* 3) Text: subtle fade-in on load */
+.hero-brand-content{
+  animation: heroTextIn 900ms ease-out both;
+}
+
+@keyframes heroTextIn{
+  from { opacity: 0; transform: translate3d(0, 10px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+/* 4) Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .hero-bg,
+  .hero-brand::after,
+  .hero-brand-content{
+    animation: none !important;
+  }
+}
