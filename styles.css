@@ -799,3 +799,193 @@ p{ margin:0; color:var(--muted); line-height:1.7; }
     text-decoration: none;
   }
 }
+/* =================================================
+   FINAL POLISH – Cards / Typography
+   + Desktop Hover Glow
+   + Mobile Sticky Contact Bar
+   Paste EVERYTHING below at END of styles.css
+   ================================================= */
+
+/* ---------- 卡片精修（玻璃铭牌感） ---------- */
+
+.section-dark .cta-info{
+  padding-top: 100px !important;
+  padding-bottom: 90px !important;
+}
+
+.cta-block, .info-block{
+  position: relative;
+  overflow: hidden;
+
+  border-radius: 26px !important;
+  border: 1px solid rgba(255,255,255,0.10) !important;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.055),
+    rgba(255,255,255,0.018)
+  ) !important;
+
+  box-shadow:
+    0 40px 120px rgba(0,0,0,0.55),
+    inset 0 1px 0 rgba(255,255,255,0.08) !important;
+
+  padding: 34px 36px !important;
+}
+
+/* 标题：品牌标签感 */
+.cta-block h3,
+.info-block h3{
+  font-size: 11px !important;
+  letter-spacing: 0.38em !important;
+  text-transform: uppercase !important;
+  opacity: 0.65 !important;
+  margin: 0 0 24px 0 !important;
+}
+
+/* 行距与分隔 */
+.cta-lines div,
+.info-lines div{
+  padding: 22px 0 !important;
+  border-bottom: 1px solid rgba(255,255,255,0.055) !important;
+}
+.cta-lines div:last-child,
+.info-lines div:last-child{
+  border-bottom: none !important;
+}
+
+/* 左侧 label */
+.cta-lines span,
+.info-lines span{
+  font-size: 11px !important;
+  letter-spacing: 0.22em !important;
+  opacity: 0.42 !important;
+}
+
+/* 右侧关键信息 */
+.cta-lines strong,
+.info-lines strong{
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.01em !important;
+}
+
+/* Address 稳定换行 */
+.info-lines strong{
+  max-width: 60% !important;
+  text-align: right !important;
+  line-height: 1.4 !important;
+}
+
+/* 电话链接 */
+.cta-lines a{
+  color: #fff !important;
+  text-decoration: none !important;
+  border-bottom: 1px solid rgba(255,255,255,0.18) !important;
+  padding-bottom: 2px !important;
+}
+
+/* ---------- 桌面端 hover 微光 ---------- */
+@media (hover: hover) and (pointer: fine){
+  .cta-block, .info-block{
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+  }
+
+  .cta-block:hover,
+  .info-block:hover{
+    transform: translateY(-2px);
+    border-color: rgba(255,255,255,0.14) !important;
+    box-shadow:
+      0 46px 140px rgba(0,0,0,0.62),
+      inset 0 1px 0 rgba(255,255,255,0.10) !important;
+  }
+
+  .cta-block::before,
+  .info-block::before{
+    content:'';
+    position:absolute;
+    inset:-1px;
+    border-radius: 26px;
+    pointer-events:none;
+    background: radial-gradient(
+      60% 60% at 50% 0%,
+      rgba(110,170,255,0.14),
+      rgba(110,170,255,0.00) 60%
+    );
+    opacity: 0;
+    transition: opacity .35s ease;
+  }
+
+  .cta-block:hover::before,
+  .info-block:hover::before{
+    opacity: 1;
+  }
+}
+
+/* ---------- 手机端底部固定 Phone / WeChat ---------- */
+@media (max-width: 900px){
+  body{
+    padding-bottom: 82px;
+  }
+
+  .section-dark .cta-info{
+    padding-top: 70px !important;
+    padding-bottom: 70px !important;
+  }
+
+  .sticky-contact{
+    position: fixed;
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    z-index: 9999;
+
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 12px 14px;
+    border-radius: 18px;
+
+    background: rgba(7,11,20,0.55);
+    border: 1px solid rgba(255,255,255,0.10);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow: 0 24px 70px rgba(0,0,0,0.55);
+  }
+
+  .sticky-contact .item{
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .sticky-contact .label{
+    display: block;
+    font-size: 10px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    opacity: .55;
+    margin-bottom: 4px;
+  }
+
+  .sticky-contact .value{
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: .02em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .sticky-contact a{
+    color: #fff;
+    text-decoration: none;
+  }
+}
