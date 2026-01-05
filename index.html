@@ -1,1 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>KOICOIN</title>
 
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+
+body{
+  background:#05070c;
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* ===== HERO ===== */
+.hero{
+  position:relative;
+  min-height:100svh; /* Safari 稳定 */
+  background:url("assets/images/hero.JPG") center/cover no-repeat;
+  display:flex;
+  align-items:flex-end;
+  padding:64px 24px;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.05),
+    rgba(0,0,0,0.65)
+  );
+}
+
+/* ===== LANG SWITCH ===== */
+.lang{
+  position:fixed;
+  top:20px;
+  right:20px;
+  z-index:10;
+  display:flex;
+  gap:6px;
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(14px);
+  border-radius:999px;
+  padding:4px;
+}
+
+.lang button{
+  background:none;
+  border:none;
+  color:#fff;
+  padding:6px 14px;
+  border-radius:999px;
+  opacity:.6;
+  font-size:13px;
+}
+
+.lang button.active{
+  background:rgba(255,255,255,0.22);
+  opacity:1;
+}
+
+/* ===== HERO CONTENT ===== */
+.hero-content{
+  position:relative;
+  z-index:2;
+  width:100%;
+}
+
+.hero h1{
+  font-size:clamp(64px,14vw,160px);
+  font-weight:700;
+  letter-spacing:.04em;
+  line-height:1;
+}
+
+.hero .tagline{
+  margin-top:10px;
+  letter-spacing:.3em;
+  font-size:12px;
+  opacity:.7;
+}
+
+/* ===== CONTACT CARDS ===== */
+.cards{
+  margin-top:28px;
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.card{
+  flex:1;
+  min-width:220px;
+  background:rgba(255,255,255,0.10);
+  border-radius:18px;
+  padding:18px 20px;
+  backdrop-filter:blur(18px);
+}
+
+.card span{
+  display:block;
+  font-size:11px;
+  opacity:.6;
+  letter-spacing:.2em;
+}
+
+.card strong{
+  display:block;
+  margin-top:6px;
+  font-size:18px;
+}
+
+/* ===== MOBILE FIX ===== */
+@media (max-width:520px){
+  .hero{
+    padding-bottom:96px;
+  }
+
+  .hero h1{
+    font-size:72px;
+    white-space:normal;
+  }
+
+  .cards{
+    flex-direction:column;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Language -->
+<div class="lang">
+  <button class="active" onclick="setLang('zh')">中文</button>
+  <button onclick="setLang('en')">EN</button>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1 id="title">KOICOIN</h1>
+    <div class="tagline" id="tagline">CAFE · KTV · BAR</div>
+
+    <div class="cards">
+      <div class="card">
+        <span>PHONE</span>
+        <strong>027 332 2466</strong>
+      </div>
+      <div class="card">
+        <span>WECHAT</span>
+        <strong>koicoin_nz</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function setLang(lang){
+  document.querySelectorAll('.lang button')
+    .forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+
+  if(lang==='en'){
+    document.documentElement.lang='en';
+  }else{
+    document.documentElement.lang='zh';
+  }
+}
+</script>
+
+</body>
+</html>
