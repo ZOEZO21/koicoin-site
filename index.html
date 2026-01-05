@@ -8,10 +8,13 @@
 </head>
 <body>
 
-<header class="topbar topbar-ghost">
+<!-- =====================
+     DESKTOP ONLY TOP BAR
+     (hidden on mobile by inline CSS below)
+     ===================== -->
+<header class="topbar topbar-ghost desktop-only">
   <div class="container nav">
     <div class="brand-mini">KOICOIN</div>
-
     <div class="right">
       <div class="lang">
         <button data-set-lang="zh" class="active">中文</button>
@@ -30,7 +33,7 @@
   <div class="hero-brand-content hero-center">
     <h1>KOICOIN</h1>
 
-    <!-- 一句定位（中英文统一） -->
+    <!-- One-line positioning only -->
     <p data-lang="zh">Cafe · KTV · Bar</p>
     <p data-lang="en">Cafe · KTV · Bar</p>
   </div>
@@ -42,7 +45,7 @@
 <section class="section section-dark">
   <div class="container cta-info">
 
-    <!-- CTA -->
+    <!-- Booking -->
     <div class="cta-block">
       <h3 data-lang="zh">预约 / 咨询</h3>
       <h3 data-lang="en">Booking</h3>
@@ -53,6 +56,7 @@
           <span data-lang="en">Phone</span>
           <strong><a href="tel:0273322466">027 332 2466</a></strong>
         </div>
+
         <div>
           <span data-lang="zh">WeChat</span>
           <span data-lang="en">WeChat</span>
@@ -61,7 +65,7 @@
       </div>
     </div>
 
-    <!-- INFO -->
+    <!-- Info -->
     <div class="info-block">
       <h3 data-lang="zh">Info</h3>
       <h3 data-lang="en">Info</h3>
@@ -72,6 +76,7 @@
           <span data-lang="en">Address</span>
           <strong>260 Oteha Valley Road, Albany, Auckland</strong>
         </div>
+
         <div>
           <span data-lang="zh">Hours</span>
           <span data-lang="en">Hours</span>
@@ -83,6 +88,9 @@
   </div>
 </section>
 
+<!-- =====================
+     FOOTER
+     ===================== -->
 <footer class="footer">
   <div class="container footerGrid">
     <div>
@@ -92,7 +100,10 @@
   </div>
 </footer>
 
-  <div class="sticky-contact">
+<!-- =====================
+     MOBILE STICKY CONTACT
+     ===================== -->
+<div class="sticky-contact">
   <div class="item">
     <span class="label">Phone</span>
     <span class="value"><a href="tel:0273322466">027 332 2466</a></span>
@@ -102,7 +113,17 @@
     <span class="value">koicoin_nz</span>
   </div>
 </div>
-  
+
+<!-- =====================
+     INLINE CSS: force hide top bar on mobile
+     (guaranteed, no class guessing)
+     ===================== -->
+<style>
+  @media (max-width: 900px){
+    .desktop-only{ display:none !important; }
+  }
+</style>
+
 <script src="./script.js"></script>
 </body>
 </html>
