@@ -434,4 +434,60 @@ p{ margin:0; color:var(--muted); line-height:1.7; }
   .hero-brand-content h1{
     font-size: clamp(72px, 22vw, 160px);
   }
+}/* ===============================
+   Landing minimal CTA + Info
+   =============================== */
+
+.hero-center{
+  align-items: flex-start;
+}
+
+.cta-info{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  padding: 80px 0;
+}
+
+.cta-block,
+.info-block{
+  background: rgba(255,255,255,.02);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 20px;
+  padding: 32px;
+}
+
+.cta-lines div,
+.info-lines div{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.cta-lines div:last-child,
+.info-lines div:last-child{
+  border-bottom: none;
+}
+
+.cta-lines span,
+.info-lines span{
+  opacity: .6;
+  font-size: 13px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.cta-lines strong,
+.info-lines strong{
+  font-size: 16px;
+  font-weight: 500;
+}
+
+@media (max-width: 900px){
+  .cta-info{
+    grid-template-columns: 1fr;
+    padding: 60px 0;
+  }
 }
