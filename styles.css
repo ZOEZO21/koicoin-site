@@ -638,4 +638,164 @@ p{ margin:0; color:var(--muted); line-height:1.7; }
   .info-lines strong{
     max-width: 58%;
   }
+}/* ===============================
+   FINAL MICRO TUNING
+   =============================== */
+
+/* 1️⃣ 整个信息区下移，给 Hero 呼吸 */
+.section-dark .cta-info{
+  padding-top: 100px !important;
+  padding-bottom: 90px !important;
+}
+
+/* 2️⃣ 卡片与背景拉开层级 */
+.cta-block, .info-block{
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.055),
+    rgba(255,255,255,0.018)
+  ) !important;
+
+  border: 1px solid rgba(255,255,255,0.10) !important;
+
+  box-shadow:
+    0 40px 120px rgba(0,0,0,0.55),
+    inset 0 1px 0 rgba(255,255,255,0.08) !important;
+}
+
+/* 3️⃣ 标题稍微更“品牌标签” */
+.cta-block h3,
+.info-block h3{
+  font-size: 11px !important;
+  letter-spacing: 0.38em !important;
+  opacity: 0.65 !important;
+}
+
+/* 4️⃣ 行距略微再放开 */
+.cta-lines div,
+.info-lines div{
+  padding: 22px 0 !important;
+}
+
+/* 5️⃣ Address 行更稳的右对齐 */
+.info-lines strong{
+  max-width: 60% !important;
+  text-align: right !important;
+  line-height: 1.4 !important;
+}
+
+/* 6️⃣ 手机端再克制一点 */
+@media (max-width: 900px){
+  .section-dark .cta-info{
+    padding-top: 70px !important;
+    padding-bottom: 70px !important;
+  }
+}
+/* ===============================
+   ADD-ONS
+   1) Desktop: subtle hover glow
+   2) Mobile: sticky contact bar
+   paste at END of styles.css
+   =============================== */
+
+/* ---------- 1) Desktop hover glow ---------- */
+@media (hover: hover) and (pointer: fine){
+  .cta-block, .info-block{
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+  }
+
+  .cta-block:hover, .info-block:hover{
+    transform: translateY(-2px);
+    border-color: rgba(255,255,255,0.14);
+    box-shadow:
+      0 46px 140px rgba(0,0,0,0.62),
+      inset 0 1px 0 rgba(255,255,255,0.10);
+  }
+
+  /* subtle edge glow */
+  .cta-block::before, .info-block::before{
+    content:'';
+    position:absolute;
+    inset:-1px;
+    border-radius: 26px;
+    pointer-events:none;
+    background: radial-gradient(60% 60% at 50% 0%,
+      rgba(110,170,255,0.14),
+      rgba(110,170,255,0.00) 60%
+    );
+    opacity: 0;
+    transition: opacity .35s ease;
+  }
+
+  .cta-block:hover::before, .info-block:hover::before{
+    opacity: 1;
+  }
+
+  /* ensure pseudo elements show correctly */
+  .cta-block, .info-block{
+    position: relative;
+    overflow: hidden;
+  }
+}
+
+/* ---------- 2) Mobile sticky contact bar ---------- */
+@media (max-width: 900px){
+  /* Give space so bar doesn't cover content */
+  body{ padding-bottom: 82px; }
+
+  .sticky-contact{
+    position: fixed;
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    z-index: 9999;
+
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 12px 14px;
+    border-radius: 18px;
+
+    background: rgba(7,11,20,0.55);
+    border: 1px solid rgba(255,255,255,0.10);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow: 0 24px 70px rgba(0,0,0,0.55);
+  }
+
+  .sticky-contact .item{
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .sticky-contact .label{
+    display: block;
+    font-size: 10px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    opacity: .55;
+    margin-bottom: 4px;
+  }
+
+  .sticky-contact .value{
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: .02em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .sticky-contact a{
+    color: #fff;
+    text-decoration: none;
+  }
 }
