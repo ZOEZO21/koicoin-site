@@ -306,3 +306,132 @@ p{ margin:0; color:var(--muted); line-height:1.7; }
     font-size: clamp(72px, 22vw, 160px);
   }
 }
+/* ===============================
+   LANDOR BRAND HERO – FINAL
+   Paste EVERYTHING below
+   at the VERY END of styles.css
+   =============================== */
+
+/* Topbar: cleaner + sharper */
+.topbar-ghost{
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: linear-gradient(
+    180deg,
+    rgba(7,11,20,.65),
+    rgba(7,11,20,.10)
+  );
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.topbar-ghost .links a{
+  opacity: .85;
+  font-weight: 500;
+}
+.topbar-ghost .links a:hover{
+  opacity: 1;
+}
+
+/* HERO BASE */
+.hero-brand{
+  position: relative;
+  height: 100vh;
+  background: #070b14;
+  overflow: hidden;
+}
+
+.hero-brand .hero-bg{
+  position: absolute;
+  inset: 0;
+  background-image: url('./assets/images/hero.JPG');
+  background-size: cover;
+  background-position: center;
+  filter:
+    saturate(1.6)
+    contrast(1.15)
+    brightness(1.08)
+    hue-rotate(-12deg);
+  animation: heroDrift 18s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+/* Smarter overlay for readability */
+.hero-brand::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(
+      70% 55% at 55% 55%,
+      rgba(0,0,0,.62),
+      rgba(0,0,0,.15) 55%,
+      rgba(0,0,0,.75)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(7,11,20,.25),
+      rgba(7,11,20,.88)
+    );
+}
+
+/* HERO CONTENT */
+.hero-brand-content{
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8vh 8vw 0;
+}
+
+.hero-brand-content h1{
+  font-size: clamp(96px, 18vw, 260px);
+  line-height: .9;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-shadow: 0 12px 40px rgba(0,0,0,.55);
+}
+
+.hero-brand-content p{
+  margin-top: 18px;
+  font-size: 14px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  opacity: .92;
+  max-width: 520px;
+}
+
+/* Subtle background motion */
+@keyframes heroDrift{
+  from{
+    transform: scale(1.03) translate3d(-6px,-6px,0);
+  }
+  to{
+    transform: scale(1.06) translate3d(10px,8px,0);
+  }
+}
+
+/* Mini CTA button (optional but recommended) */
+.cta-mini{
+  margin-left: 14px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(0,0,0,.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.cta-mini:hover{
+  border-color: rgba(255,255,255,.28);
+}
+
+/* Mobile fine-tune */
+@media (max-width: 768px){
+  .hero-brand-content{
+    padding: 10vh 6vw 0;
+  }
+  .hero-brand-content h1{
+    font-size: clamp(72px, 22vw, 160px);
+  }
+}
